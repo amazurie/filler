@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putnchar_fd.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/04 14:38:04 by amazurie          #+#    #+#             */
-/*   Updated: 2016/11/10 13:22:10 by amazurie         ###   ########.fr       */
+/*   Created: 2017/01/11 13:15:02 by amazurie          #+#    #+#             */
+/*   Updated: 2017/04/11 16:23:22 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr_fd(char const *s, int fd)
+void	ft_putnchar_fd(const char c, size_t n, int fd)
 {
-	int i;
+	size_t i;
 
-	i = -1;
-	if (s)
-	{
-		while (s[++i])
-			ft_putchar_fd(s[i], fd);
-	}
+	i = 0;
+	while (i++ < n)
+		ft_putchar_fd(c, fd);
 }

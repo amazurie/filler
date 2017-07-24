@@ -6,7 +6,7 @@
 #    By: amazurie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/05 13:11:07 by amazurie          #+#    #+#              #
-#    Updated: 2017/06/29 14:27:47 by amazurie         ###   ########.fr        #
+#    Updated: 2017/05/24 13:20:00 by amazurie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c ft_lstmap.c ft_isspace.c \
 ft_isblank.c ft_isupper.c ft_islower.c ft_strndup.c ft_strtrimc.c ft_strnjoin.c \
 ft_strlen_chr.c ft_putnstr.c ft_putnchar.c ft_lennb.c ft_putnbrbase.c ft_putwstr.c \
 ft_lennbase.c ft_putwchar.c ft_wstrlen.c ft_putnwstr.c ft_wstrnlen.c ft_itoa_base.c \
-ft_strswap.c get_next_line.c ft_strschr.c ft_strschr_len.c ft_putnstr_fd.c
+ft_strswap.c get_next_line.c ft_strschr.c ft_strschr_len.c ft_putnchar_fd.c
 
 FLAGS = -Wall -Wextra -Werror
 
@@ -37,9 +37,9 @@ OSRC = $(SRC:.c=.o)
 
 HEADER = libft.h
 
-NO_COLOR=\x1b[0m
-OK_COLOR=\x1b[32;01m
-DEL_COLOR=\x1b[33m
+NO_COLOR = \x1b[0m
+OK_COLOR = \x1b[32;01m
+DEL_COLOR = \x1b[33m
 
 TOTAL_FILE = 82
 SIZE_BAR = 2 #reduce number to reduce bar size
@@ -48,7 +48,6 @@ all: $(NAME)
 
 $(NAME): $(OSRC)
 	@echo "\nCompiling..."
-	@$(CC) $(FLAGS) -c $(SRC) -I $(INC)
 	@ar rc $(NAME) $(OSRC)
 	@ranlib $(NAME)
 	@echo "$(OK_COLOR)$@ compiled.$(NO_COLOR)"

@@ -98,6 +98,8 @@ int			game(t_data *d)
 				mlx_destroy_window(d->mlx, d->win);
 			}
 			(d->keep == 0) ? exit(1) : (0);
+			d->e_count++;
+			up_win(d);
 			return (0);
 		}
 		ft_putnbr(d->place_y);

@@ -25,11 +25,8 @@ void		parse(t_data *d, char **av, int ac)
 	i = 0;
 	while (++i < ac)
 	{
-		j = -1;
-		while (av[i][++j])
-		{
-			if (!check_opt(d, av[i][j]))
-				j = ft_strlen(av[i]);
-		}
+		j = 0;
+		while (av[i][++j] && check_opt(d, av[i][j]))
+			j++;
 	}
 }

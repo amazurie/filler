@@ -43,7 +43,8 @@ int		check_close(t_data *d, int y, int x, int top)
 
 static int	check_espot(t_data *d, int y, int x)
 {
-	if ((d->map[y][x] == d->e_car || d->map[y][x] == d->e_car + 32)
+	if ((d->map[y][x] == d->e_car || d->map[y][x] == d->e_car + 32
+		|| (d->p_count < 10 && (d->p_car == 'X' || d->p_car == 'O')))
 		&& ((y < d->map_y || (d->map[y + 1] &&
 		(d->map[y + 1][x] != d->e_car && d->map[y + 1][x] != d->e_car + 32)))
 		|| (y > 0 || (d->map[y - 1] &&
@@ -70,7 +71,10 @@ static int	test_best(t_data *d)
 		while (++xy[1] < d->map_x)
 		{
 			if (check_espot(d, xy[0], xy[1])
-				&& (test = check_close(d, xy[0], xy[1], top)) < top)
+				&& ((test = check_close(d, xy[0], xy[1], top)) < top
+				|| ((test < top && d->p_count > 10 && d->p_car == 'X')
+				|| top == d->map_x + d->map_y || (d->p_count < 10
+				&& d->p_car == 'O'))))
 				top = test;
 		}
 	}
