@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 14:10:18 by amazurie          #+#    #+#             */
-/*   Updated: 2017/07/25 11:24:41 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/07/25 12:34:48 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,10 @@ int			game(t_data *d)
 		if (!put_coord(d))
 			return (0);
 	}
+	else if (d->is_win)
+		destroy(d);
+	else
+		exit(0);
 	return (1);
 }
 
