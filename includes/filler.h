@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/03 16:53:03 by amazurie          #+#    #+#             */
-/*   Updated: 2017/07/25 11:09:46 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/07/25 11:24:18 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,6 @@ int					get_color(t_data *d, int y, int x);
 void				render_back(t_data *d);
 void				render_score(t_data *d);
 int					destroy(t_data *d);
+int					put_coord(t_data *d);
 
 #endif

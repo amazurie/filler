@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 14:10:18 by amazurie          #+#    #+#             */
-/*   Updated: 2017/07/25 11:10:41 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/07/25 11:24:41 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,33 +73,15 @@ static int	win_init(t_data *d)
 
 int			game(t_data *d)
 {
+	d->place_x = -1;
+	d->place_y = -1;
 	if (get_next_line(0, &(d->line)) > 0)
 	{
 		read_map(d);
 		if (d->is_win != -1 && win_init(d) > 0)
 			render(d);
-		if (strat(d) == 0)
-		{
-			ft_putstr("0 0\n");
-			if (d->keep == 0 && d->is_win != -1)
-			{
-				mlx_destroy_image(d->mlx, d->imgf.img);
-				mlx_destroy_image(d->mlx, d->imgb.img);
-				mlx_destroy_window(d->mlx, d->win);
-			}
-			(d->keep == 0) ? exit(1) : (0);
-			d->e_count++;
-			up_win(d);
+		if (!put_coord(d))
 			return (0);
-		}
-		ft_putnbr(d->place_y);
-		ft_putchar(' ');
-		ft_putnbr(d->place_x);
-		ft_putchar('\n');
-		d->p_count++;
-		free(d->piece);
-		if (d->slow == 1)
-			sleep(1);
 	}
 	return (1);
 }
@@ -111,8 +93,6 @@ int			main(int ac, char **av)
 
 	d.win_multi = 10;
 	d.is_win = 0;
-	d.place_x = -1;
-	d.place_y = -1;
 	d.map_x = -1;
 	d.slow = 0;
 	d.keep = 0;
