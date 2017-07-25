@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 14:10:18 by amazurie          #+#    #+#             */
-/*   Updated: 2017/07/25 12:34:48 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/07/25 13:40:30 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,14 @@ int			game(t_data *d)
 		read_map(d);
 		if (d->is_win != -1 && win_init(d) > 0)
 			render(d);
+		if (d->is_win && d->fast_quit == 1 && d->p_count != d->e_count)
+		{
+			mlx_destroy_image(d->mlx, d->imgf.img);
+			mlx_destroy_image(d->mlx, d->imgb.img);
+			mlx_destroy_window(d->mlx, d->win);
+			ft_putstr("winner determined\n");
+			exit(1);
+		}
 		if (!put_coord(d))
 			return (0);
 	}
@@ -95,6 +103,7 @@ int			main(int ac, char **av)
 	t_data	d;
 	char	*tmp;
 
+	d.fast_quit = 0;
 	d.win_multi = 10;
 	d.is_win = 0;
 	d.map_x = -1;

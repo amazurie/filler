@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/03 16:53:03 by amazurie          #+#    #+#             */
-/*   Updated: 2017/07/25 11:24:18 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/07/25 13:34:37 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct		s_data
 	int				p_count;
 	int				e_count;
 	int				e_count_save;
+	int				fast_quit;
 }					t_data;
 
 void				read_map_size(t_data *d);

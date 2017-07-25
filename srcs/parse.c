@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/25 11:04:44 by amazurie          #+#    #+#             */
-/*   Updated: 2017/07/25 11:04:45 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/07/25 13:41:06 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ static int	check_opt(t_data *d, char av)
 		d->keep = -1;
 	else if (av == 'd')
 		d->win_multi = -1;
+	else if (av == 'f')
+		d->fast_quit = 1;
 	else
 		return (0);
 	return (1);
