@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/29 16:07:12 by amazurie          #+#    #+#             */
-/*   Updated: 2017/07/25 16:30:17 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/07/25 16:38:34 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int			check_close(t_data *d, int y, int x, int top)
 
 static int	check_espot(t_data *d, int y, int x)
 {
-	if (d->p_count < 15 && ((d->map_x * d->map_y > 5000 && d->p_car == 'O')
-			|| (d->map_x * d->map_y < 400 && d->p_car == 'X')))
+	if ((d->p_count < 20 && d->map_x * d->map_y > 5000 && d->p_car == 'O')
+		|| (d->p_count < 15 && d->map_x * d->map_y < 400 && d->p_car == 'X'))
 		return (1);
 	if ((d->map[y][x] == d->e_car || d->map[y][x] == d->e_car + 32)
 		&& ((y < d->map_y || (d->map[y + 1] &&
@@ -75,7 +75,7 @@ static int	test_best(t_data *d)
 			if (check_espot(d, xy[0], xy[1])
 				&& ((test = check_close(d, xy[0], xy[1], top)) < top))
 				top = test;
-			if (d->p_count < 15 && d->map_x * d->map_y > 5000 && d->p_car == 'O'
+			if (d->p_count < 20 && d->map_x * d->map_y > 5000 && d->p_car == 'O'
 					&& xy[0] == d->map_y / 2 + d->map_y / 4)
 				return (test);
 			if (d->p_car == 'X' && d->p_count < 15 && d->map_x * d->map_y < 400
