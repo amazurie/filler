@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/29 16:07:12 by amazurie          #+#    #+#             */
-/*   Updated: 2017/07/25 11:08:26 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/07/25 15:30:49 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,10 @@ int			check_close(t_data *d, int y, int x, int top)
 
 static int	check_espot(t_data *d, int y, int x)
 {
-	if ((d->map[y][x] == d->e_car || d->map[y][x] == d->e_car + 32
-		|| (d->p_count < 10 && (d->p_car == 'X' || d->p_car == 'O')))
+	if (d->p_count < 15 && (d->map_x * d->map_y > 5000
+			|| d->map_x * d->map_y < 400))
+		return (1);
+	if ((d->map[y][x] == d->e_car || d->map[y][x] == d->e_car + 32)
 		&& ((y < d->map_y || (d->map[y + 1] &&
 		(d->map[y + 1][x] != d->e_car && d->map[y + 1][x] != d->e_car + 32)))
 		|| (y > 0 || (d->map[y - 1] &&
@@ -71,11 +73,14 @@ static int	test_best(t_data *d)
 		while (++xy[1] < d->map_x)
 		{
 			if (check_espot(d, xy[0], xy[1])
-				&& ((test = check_close(d, xy[0], xy[1], top)) < top
-				|| ((test < top && d->p_count > 10 && d->p_car == 'X')
-				|| top == d->map_x + d->map_y || (d->p_count < 10
-				&& d->p_car == 'O'))))
+				&& ((test = check_close(d, xy[0], xy[1], top)) < top))
 				top = test;
+			if (d->p_count < 15 && d->map_x * d->map_y > 5000
+					&& xy[0] == d->map_y / 2 + d->map_y / 4)
+				return (test);
+			if (d->p_count < 15 && d->map_x * d->map_y < 400
+					&& xy[1] == d->map_x / 2 + d->map_x / 4)
+				return (test);
 		}
 	}
 	return (top);
