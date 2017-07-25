@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   render_score.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/07/25 11:05:26 by amazurie          #+#    #+#             */
+/*   Updated: 2017/07/25 11:15:05 by amazurie         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "filler.h"
 
 static void	calc_score(t_data *d)
@@ -46,7 +58,7 @@ static void	avantage(t_data *d)
 			(d->map_y * d->win_multi + 6) / 4 / 2) + 20, 0x870000, "ENNEMY");
 		mlx_string_put(d->mlx, d->win, d->map_x * d->win_multi + 56,
 			((d->map_y * d->win_multi + 6) / 2 + (d->map_y * d->win_multi + 6)
-			 / 4 / 2) + 50, 0x000287, "NOOOOOOON!");
+			/ 4 / 2) + 50, 0x000287, "NOOOOOOON!");
 	}
 }
 
@@ -59,23 +71,22 @@ void		render_score(t_data *d)
 			(d->map_y * d->win_multi + 6) / 2 / 4 - 13, 0x000287, "ME:");
 	if ((tmp = ft_itoa(d->p_count)) != NULL)
 		mlx_string_put(d->mlx, d->win, d->map_x * d->win_multi + 16,
-				(d->map_y * d->win_multi + 6) / 2 / 4 + 7, 0x0002B8, tmp);
+			(d->map_y * d->win_multi + 6) / 2 / 4 + 7, 0x0002B8, tmp);
 	free(tmp);
 	mlx_string_put(d->mlx, d->win, d->map_x * d->win_multi + 16,
 			(d->map_y * d->win_multi + 6) / 2 / 2 + 7, 0x870000, "ENNEMY:");
 	if ((tmp = ft_itoa(d->e_count)) != NULL)
 		mlx_string_put(d->mlx, d->win, d->map_x * d->win_multi + 16,
-				(d->map_y * d->win_multi + 6) / 2 / 2 + 27, 0xb80000, tmp);
+			(d->map_y * d->win_multi + 6) / 2 / 2 + 27, 0xb80000, tmp);
 	free(tmp);
-	if (d->p_count == d->e_count)
-	{
-		mlx_string_put(d->mlx, d->win, d->map_x * d->win_multi + 71,
-			((d->map_y * d->win_multi + 6) / 2 +
-			(d->map_y * d->win_multi + 6) / 4 / 2), 0x870000, "EGALITE");
-		mlx_string_put(d->mlx, d->win, d->map_x * d->win_multi + 31,
-			((d->map_y * d->win_multi + 6) / 2 + (d->map_y * d->win_multi + 6)
-			 / 4 / 2) + 50, 0x000287, "CA VA CHAUFFER!");
-	}
-	else
+	if (d->p_count != d->e_count)
 		avantage(d);
+	if (d->p_count != d->e_count)
+		return ;
+	mlx_string_put(d->mlx, d->win, d->map_x * d->win_multi + 71,
+		((d->map_y * d->win_multi + 6) / 2 +
+		(d->map_y * d->win_multi + 6) / 4 / 2), 0x870000, "EGALITE");
+	mlx_string_put(d->mlx, d->win, d->map_x * d->win_multi + 31,
+		((d->map_y * d->win_multi + 6) / 2 + (d->map_y * d->win_multi + 6)
+		/ 4 / 2) + 50, 0x000287, "CA VA CHAUFFER!");
 }

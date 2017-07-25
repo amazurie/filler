@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 14:10:12 by amazurie          #+#    #+#             */
-/*   Updated: 2017/05/22 14:10:13 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/07/25 11:09:18 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,14 @@ int		get_color(t_data *d, int y, int x)
 	else if (d->p_car != 'O' && (d->map[y][x] == 'O' || d->map[y][x] == 'o'))
 		return (0xD02020);
 	return (0xF000FF);
+}
+
+int		destroy(t_data *d)
+{
+	mlx_destroy_image(d->mlx, d->imgf.img);
+	mlx_destroy_image(d->mlx, d->imgb.img);
+	mlx_destroy_window(d->mlx, d->win);
+	ft_putstr("quitted unexpectedly\n");
+	exit(1);
+	return (1);
 }

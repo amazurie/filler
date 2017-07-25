@@ -6,13 +6,13 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/29 16:06:58 by amazurie          #+#    #+#             */
-/*   Updated: 2017/06/29 16:37:09 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/07/25 11:07:57 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-static int		test_pos(t_data *d, int y, int x, int *over)
+static int	test_pos(t_data *d, int y, int x, int *over)
 {
 	if (d->map[y][x] != '.'
 			&& d->map[y][x] != d->p_car

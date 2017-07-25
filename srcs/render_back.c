@@ -1,5 +1,16 @@
-#include "filler.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   render_back.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/07/25 11:05:15 by amazurie          #+#    #+#             */
+/*   Updated: 2017/07/25 11:10:50 by amazurie         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "filler.h"
 
 static void	pixel_put(t_data *d, int y, int x, int color)
 {
@@ -24,7 +35,7 @@ static void	pixel_put(t_data *d, int y, int x, int color)
 	d->imgb.ptr[++pos] = (color >> 16) & 0xFF;
 }
 
-void	render_back(t_data *d)
+void		render_back(t_data *d)
 {
 	int		y;
 	int		x;

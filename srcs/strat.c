@@ -6,13 +6,13 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/29 16:07:12 by amazurie          #+#    #+#             */
-/*   Updated: 2017/06/29 17:26:26 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/07/25 11:08:26 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-int		check_close(t_data *d, int y, int x, int top)
+int			check_close(t_data *d, int y, int x, int top)
 {
 	int		xy[2];
 	int		dist;
@@ -96,7 +96,7 @@ int			strat(t_data *d)
 		while (++d->test_x < d->map_x)
 		{
 			if (place_piece(d, d->test_y, d->test_x)
-					&& (test = test_best(d)) < top)
+				&& (test = test_best(d)) < top)
 			{
 				top = test;
 				d->place_y = d->test_y;

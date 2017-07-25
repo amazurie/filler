@@ -6,21 +6,11 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 14:10:18 by amazurie          #+#    #+#             */
-/*   Updated: 2017/06/29 16:53:30 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/07/25 11:10:41 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
-
-static int	destroy(t_data *d)
-{
-	mlx_destroy_image(d->mlx, d->imgf.img);
-	mlx_destroy_image(d->mlx, d->imgb.img);
-	mlx_destroy_window(d->mlx, d->win);
-	ft_putstr("quitted unexpectedly\n");
-	exit(1);
-	return (1);
-}
 
 static void	set_player(t_data *d)
 {
@@ -63,21 +53,21 @@ static int	win_init(t_data *d)
 	d->is_win = 1;
 	get_multi(d);
 	if (!(d->win = mlx_new_window(d->mlx, d->map_x * d->win_multi + 206,
-			d->map_y * d->win_multi + 6, "amazurie.filler")))
+					d->map_y * d->win_multi + 6, "amazurie.filler")))
 		return (0);
 	if (!(d->imgb.img = mlx_new_image(d->mlx,
-			d->map_x * d->win_multi + 206, d->map_y * d->win_multi + 6))
+					d->map_x * d->win_multi + 206, d->map_y * d->win_multi + 6))
 			|| !(d->imgb.ptr = mlx_get_data_addr(d->imgb.img, &(d->imgb.bpp),
-			&(d->imgb.stride), &(d->imgb.endian))))
+					&(d->imgb.stride), &(d->imgb.endian))))
 		return (0);
 	if (!(d->imgf.img = mlx_new_image(d->mlx,
-			d->map_x * d->win_multi, d->map_y * d->win_multi))
+					d->map_x * d->win_multi, d->map_y * d->win_multi))
 			|| !(d->imgf.ptr = mlx_get_data_addr(d->imgf.img, &(d->imgf.bpp),
-			&(d->imgf.stride), &(d->imgf.endian))))
+					&(d->imgf.stride), &(d->imgf.endian))))
 		return (0);
 	mlx_expose_hook(d->win, up_win, d);
 	mlx_key_hook(d->win, keyhook, d);
-	mlx_hook(d->win, 17, (1L<<17), destroy, d);
+	mlx_hook(d->win, 17, (1L << 17), destroy, d);
 	return (1);
 }
 
@@ -117,7 +107,7 @@ int			game(t_data *d)
 int			main(int ac, char **av)
 {
 	t_data	d;
-	char *tmp;
+	char	*tmp;
 
 	d.win_multi = 10;
 	d.is_win = 0;
