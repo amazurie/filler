@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/25 11:05:26 by amazurie          #+#    #+#             */
-/*   Updated: 2017/07/25 11:15:05 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/08/21 10:33:31 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ static void	avantage(t_data *d)
 {
 	if (d->p_count > d->e_count)
 	{
-		mlx_string_put(d->mlx, d->win, d->map_x * d->win_multi + 66,
+		mlx_string_put(d->mlx, d->win, d->map_x * d->win_multi + 70,
 			((d->map_y * d->win_multi + 6) / 2 +
-			(d->map_y * d->win_multi + 6) / 4 / 2), 0x000287, "AVANTAGE");
+			(d->map_y * d->win_multi + 6) / 4 / 2), 0x000287, "VICTORY");
 		mlx_string_put(d->mlx, d->win, d->map_x * d->win_multi + 96,
 			((d->map_y * d->win_multi + 6) / 2 +
 			(d->map_y * d->win_multi + 6) / 4 / 2) + 20, 0x000287, "ME");
