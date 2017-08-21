@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 14:10:18 by amazurie          #+#    #+#             */
-/*   Updated: 2017/08/21 17:21:02 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/08/21 18:04:44 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,6 @@ int			game(t_data *d)
 int			main(int ac, char **av)
 {
 	t_data	d;
-	char	*tmp;
 
 	d.fast_quit = 0;
 	d.win_multi = 10;
