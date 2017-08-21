@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 14:10:18 by amazurie          #+#    #+#             */
-/*   Updated: 2017/07/25 13:40:30 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/08/21 17:21:02 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ int			main(int ac, char **av)
 
 	d.fast_quit = 0;
 	d.win_multi = 10;
-	d.is_win = 0;
+	d.is_win = -1;
 	d.map_x = -1;
 	d.slow = 0;
 	d.keep = 0;

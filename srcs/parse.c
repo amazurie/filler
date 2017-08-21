@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/25 11:04:44 by amazurie          #+#    #+#             */
-/*   Updated: 2017/07/25 13:41:06 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/08/21 17:21:07 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	check_opt(t_data *d, char av)
 	else if (av == 's')
 		d->slow = 1;
 	else if (av == 'x')
-		d->is_win = -1;
+		d->is_win = 0;
 	else if (av == 'k')
 		d->keep = -1;
 	else if (av == 'd')
