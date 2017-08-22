@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/03 16:53:03 by amazurie          #+#    #+#             */
-/*   Updated: 2017/08/21 17:59:02 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/08/22 11:53:30 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../libft/includes/libft.h"
 # include "../minilibx_macos/mlx.h"
+# include <time.h>
 
 typedef struct		s_img
 {
@@ -70,5 +71,6 @@ void				render_back(t_data *d);
 void				render_score(t_data *d);
 int					destroy(t_data *d);
 int					put_coord(t_data *d);
+void				slow_sleep(void);
 
 #endif

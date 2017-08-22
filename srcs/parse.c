@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/25 11:04:44 by amazurie          #+#    #+#             */
-/*   Updated: 2017/08/21 17:21:07 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/08/22 12:02:13 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,10 @@ void		parse(t_data *d, char **av, int ac)
 	while (++i < ac)
 	{
 		j = 0;
-		while (av[i][++j] && check_opt(d, av[i][j]))
-			j++;
+		if (av[i][0] == '-')
+		{
+			while (av[i][j] && check_opt(d, av[i][j]))
+				j++;
+		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 14:10:12 by amazurie          #+#    #+#             */
-/*   Updated: 2017/07/25 11:24:57 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/08/22 12:02:47 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,29 +62,12 @@ int		destroy(t_data *d)
 	return (1);
 }
 
-int		put_coord(t_data *d)
+void	slow_sleep(void)
 {
-	if (strat(d) == 0)
-	{
-		ft_putstr("0, 0\n");
-		if (d->keep == 0 && d->is_win != -1)
-		{
-			mlx_destroy_image(d->mlx, d->imgf.img);
-			mlx_destroy_image(d->mlx, d->imgb.img);
-			mlx_destroy_window(d->mlx, d->win);
-		}
-		(d->keep == 0) ? exit(1) : (0);
-		d->e_count++;
-		up_win(d);
-		return (0);
-	}
-	ft_putnbr(d->place_y);
-	ft_putchar(' ');
-	ft_putnbr(d->place_x);
-	ft_putchar('\n');
-	d->p_count++;
-	free(d->piece);
-	if (d->slow == 1)
-		sleep(1);
-	return (1);
+	struct timespec	req;
+	struct timespec	rem;
+
+	req.tv_sec = 0;
+	req.tv_nsec = 80000000;
+	nanosleep(&req, &rem);
 }

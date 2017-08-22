@@ -6,7 +6,7 @@
 #    By: jmoucade <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/05 13:11:07 by jmoucade          #+#    #+#              #
-#    Updated: 2017/08/21 18:04:10 by amazurie         ###   ########.fr        #
+#    Updated: 2017/08/22 12:04:56 by amazurie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,9 +38,9 @@ SRC =	$(SRC_PATH)/main.c			\
 
 OSRC = $(SRC:.c=.o)
 
-NO_COLOR=\x1b[0m
-OK_COLOR=\x1b[32;01m
-DEL_COLOR=\x1b[33m
+NO_COLOR = \x1b[0m
+OK_COLOR =\x1b[32;01m
+DEL_COLOR = \x1b[33m
 
 all: $(NAME)
 
