@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 14:10:12 by amazurie          #+#    #+#             */
-/*   Updated: 2017/08/22 12:02:47 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/08/22 12:49:01 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,6 @@ void	slow_sleep(void)
 	struct timespec	rem;
 
 	req.tv_sec = 0;
-	req.tv_nsec = 80000000;
+	req.tv_nsec = 100000000;
 	nanosleep(&req, &rem);
 }
