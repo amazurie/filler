@@ -6,13 +6,15 @@
 #    By: jmoucade <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/05 13:11:07 by jmoucade          #+#    #+#              #
-#    Updated: 2017/08/22 12:04:56 by amazurie         ###   ########.fr        #
+#    Updated: 2017/08/22 15:22:38 by amazurie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = amazurie.filler
 
 CC = gcc
+
+DFLAGS = -MMD
 
 CFLAGS = -Wall -Wextra -Werror
 
@@ -38,8 +40,10 @@ SRC =	$(SRC_PATH)/main.c			\
 
 OSRC = $(SRC:.c=.o)
 
+DEPS := $(SRC:.c=.d)
+
 NO_COLOR = \x1b[0m
-OK_COLOR =\x1b[32;01m
+OK_COLOR = \x1b[32;01m
 DEL_COLOR = \x1b[33m
 
 all: $(NAME)
@@ -56,11 +60,12 @@ $(MLX):
 	@make -C $(MLX_PATH)
 
 %.o: %.c
-	@$(CC) $(CFLAGS) -I $(LIB_INC_PATH) -I $(INC_PATH) -I $(MLX_PATH) -c -o $@ $?
+	@$(CC) $(CFLAGS) $(DFLAGS) -I $(LIB_INC_PATH) -I $(INC_PATH) -I $(MLX_PATH) -c $< -o $@
 
 clean:
 	@make -C libft clean
 	@/bin/rm -f $(OSRC)
+	@/bin/rm -f $(DEPS)
 	@echo "$(DEL_COLOR)Cleaning temporary files.$(NO_COLOR)"
 
 fclean: clean
@@ -70,3 +75,5 @@ fclean: clean
 	@echo "$(DEL_COLOR)Delete $(NAME) file.$(NO_COLOR)"
 
 re: fclean all
+
+-include $(DEPS)
