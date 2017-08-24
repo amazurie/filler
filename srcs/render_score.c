@@ -6,13 +6,31 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/25 11:05:26 by amazurie          #+#    #+#             */
-/*   Updated: 2017/08/21 10:33:31 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/08/24 11:53:24 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-static void	calc_score(t_data *d)
+void		fast_exit(t_data *d)
+{
+	if (d->is_win != -1 && d->fast_quit == 1 && d->p_count > d->e_count + 1)
+	{
+		mlx_destroy_image(d->mlx, d->imgf.img);
+		mlx_destroy_image(d->mlx, d->imgb.img);
+		mlx_destroy_window(d->mlx, d->win);
+		ft_putstr("winner determined\n");
+		exit(1);
+	}
+	else if (d->is_win == -1)
+		calc_score(d);
+	if (d->is_win == -1 && d->fast_quit == 1 && d->p_count > d->e_count + 1)
+		ft_putstr("winner determined\n");
+	if (d->is_win == -1 && d->fast_quit == 1 && d->p_count > d->e_count + 1)
+		exit(1);
+}
+
+void		calc_score(t_data *d)
 {
 	int		e_count;
 	int		y;
@@ -24,10 +42,8 @@ static void	calc_score(t_data *d)
 	{
 		x = -1;
 		while (++x < d->map_x)
-		{
 			if (d->map[y][x] == d->e_car || d->map[y][x] == d->e_car + 32)
 				e_count++;
-		}
 	}
 	if (e_count > d->e_count_save)
 		d->e_count++;
@@ -40,7 +56,7 @@ static void	avantage(t_data *d)
 	{
 		mlx_string_put(d->mlx, d->win, d->map_x * d->win_multi + 70,
 			((d->map_y * d->win_multi + 6) / 2 +
-			(d->map_y * d->win_multi + 6) / 4 / 2), 0x000287, "VICTORY");
+			 (d->map_y * d->win_multi + 6) / 4 / 2), 0x000287, "VICTORY");
 		mlx_string_put(d->mlx, d->win, d->map_x * d->win_multi + 96,
 			((d->map_y * d->win_multi + 6) / 2 +
 			(d->map_y * d->win_multi + 6) / 4 / 2) + 20, 0x000287, "ME");
@@ -58,7 +74,7 @@ static void	avantage(t_data *d)
 			(d->map_y * d->win_multi + 6) / 4 / 2) + 20, 0x870000, "ENNEMY");
 		mlx_string_put(d->mlx, d->win, d->map_x * d->win_multi + 56,
 			((d->map_y * d->win_multi + 6) / 2 + (d->map_y * d->win_multi + 6)
-			/ 4 / 2) + 50, 0x000287, "NOOOOOOON!");
+			 / 4 / 2) + 50, 0x000287, "NOOOOOOON!");
 	}
 }
 
@@ -84,9 +100,9 @@ void		render_score(t_data *d)
 	if (d->p_count != d->e_count)
 		return ;
 	mlx_string_put(d->mlx, d->win, d->map_x * d->win_multi + 71,
-		((d->map_y * d->win_multi + 6) / 2 +
-		(d->map_y * d->win_multi + 6) / 4 / 2), 0x870000, "EGALITE");
+			((d->map_y * d->win_multi + 6) / 2 +
+			(d->map_y * d->win_multi + 6) / 4 / 2), 0x870000, "EGALITE");
 	mlx_string_put(d->mlx, d->win, d->map_x * d->win_multi + 31,
-		((d->map_y * d->win_multi + 6) / 2 + (d->map_y * d->win_multi + 6)
-		/ 4 / 2) + 50, 0x000287, "CA VA CHAUFFER!");
+			((d->map_y * d->win_multi + 6) / 2 + (d->map_y * d->win_multi + 6)
+			/ 4 / 2) + 50, 0x000287, "CA VA CHAUFFER!");
 }

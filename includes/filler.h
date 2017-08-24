@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/03 16:53:03 by amazurie          #+#    #+#             */
-/*   Updated: 2017/08/22 15:18:01 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/08/24 11:52:36 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,7 @@ void				render_score(t_data *d);
 int					destroy(t_data *d);
 int					put_coord(t_data *d);
 void				slow_sleep(void);
+void				calc_score(t_data *d);
+void				fast_exit(t_data *d);
 
 #endif
