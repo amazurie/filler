@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/25 11:05:26 by amazurie          #+#    #+#             */
-/*   Updated: 2017/08/24 11:53:24 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/08/24 11:59:46 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	avantage(t_data *d)
 	{
 		mlx_string_put(d->mlx, d->win, d->map_x * d->win_multi + 70,
 			((d->map_y * d->win_multi + 6) / 2 +
-			 (d->map_y * d->win_multi + 6) / 4 / 2), 0x000287, "VICTORY");
+			(d->map_y * d->win_multi + 6) / 4 / 2), 0x000287, "VICTORY");
 		mlx_string_put(d->mlx, d->win, d->map_x * d->win_multi + 96,
 			((d->map_y * d->win_multi + 6) / 2 +
 			(d->map_y * d->win_multi + 6) / 4 / 2) + 20, 0x000287, "ME");
@@ -74,7 +74,7 @@ static void	avantage(t_data *d)
 			(d->map_y * d->win_multi + 6) / 4 / 2) + 20, 0x870000, "ENNEMY");
 		mlx_string_put(d->mlx, d->win, d->map_x * d->win_multi + 56,
 			((d->map_y * d->win_multi + 6) / 2 + (d->map_y * d->win_multi + 6)
-			 / 4 / 2) + 50, 0x000287, "NOOOOOOON!");
+			/ 4 / 2) + 50, 0x000287, "NOOOOOOON!");
 	}
 }
 
