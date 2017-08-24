@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/29 16:06:58 by amazurie          #+#    #+#             */
-/*   Updated: 2017/08/22 17:07:57 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/08/24 11:19:56 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ int			put_coord(t_data *d)
 	if (strat(d) == 0)
 	{
 		ft_putstr("0, 0\n");
-		if (d->keep != 0)
-			sleep(8);
-		if (d->is_win == 0)
+		if (d->is_win != -1)
 		{
+			while (d->keep != 0)
+				mlx_loop(d->mlx);
 			mlx_destroy_image(d->mlx, d->imgf.img);
 			mlx_destroy_image(d->mlx, d->imgb.img);
 			mlx_destroy_window(d->mlx, d->win);
