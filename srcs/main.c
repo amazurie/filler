@@ -47,16 +47,14 @@ int			main(void)
 	t_data	d;
 
 	d.map_x = -1;
-	set_player(&d);
 	d.place_x = -1;
 	d.place_y = -1;
-	if (get_next_line(0, &(d.line)) > 0)
+	set_player(&d);
+	while (get_next_line(0, &(d.line)) > 0)
 	{
 		read_map(&d);
 		if (!put_coord(&d))
 			return (0);
 	}
-	else
-		exit(0);
 	return (0);
 }

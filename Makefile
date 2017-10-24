@@ -3,9 +3,9 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jmoucade <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: amazurie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2016/11/05 13:11:07 by jmoucade          #+#    #+#              #
+#    Created: 2016/11/05 13:11:07 by amazurie          #+#    #+#              #
 #    Updated: 2017/08/22 15:22:38 by amazurie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
@@ -37,7 +37,7 @@ NO_COLOR = \x1b[0m
 OK_COLOR = \x1b[32;01m
 DEL_COLOR = \x1b[33m
 
-all: $(NAME) $(VISU)
+all: $(NAME)
 
 $(NAME): $(LIB) $(OSRC)
 	@echo "Compiling..."
@@ -52,17 +52,16 @@ $(LIB):
 	@$(CC) $(CFLAGS) $(DFLAGS) -I $(LIB_INC_PATH) -I $(INC_PATH) -c $< -o $@
 
 clean:
-	@make -C libft clean
+	@make -C $(LIB_PATH) clean
 	@make -C visu clean
 	@/bin/rm -f $(OSRC)
 	@/bin/rm -f $(DEPS)
 	@echo "$(DEL_COLOR)Cleaning temporary files.$(NO_COLOR)"
 
 fclean: clean
-	@make -C libft fclean
+	@make -C $(LIB_PATH) fclean
 	@make -C visu fclean
 	@/bin/rm -f $(NAME)
-	@/bin/rm -f a.out
 	@echo "$(DEL_COLOR)Delete $(NAME) file.$(NO_COLOR)"
 
 re: fclean all

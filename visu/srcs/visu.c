@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "filler.h"
+#include "visu.h"
 
 void		get_multi(t_mdata *d)
 {
@@ -63,8 +63,6 @@ int			game(t_mdata *d)
 		if (d->is_win != -1 && win_init(d) > 0)
 			render(d);
 		fast_exit(d);
-		if (!put_coord(d))
-			return (0);
 	}
 	else if (d->is_win)
 		destroy(d);

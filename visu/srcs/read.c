@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "filler.h"
+#include "visu.h"
 
 void		read_map_size(t_mdata *d)
 {
@@ -65,6 +65,7 @@ void		read_map(t_mdata *d)
 	while (++i < d->map_y)
 	{
 		get_next_line(0, &(d->line));
+	exit(0);
 		k = ft_strlen_chr(d->line, ' ') + 1;
 		j = -1;
 		while (++j < d->map_x)

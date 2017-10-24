@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "filler.h"
+#include "visu.h"
 
 static int	check_opt(t_mdata *d, char av)
 {

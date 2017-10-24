@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "filler.h"
+#include "visu.h"
 
 void	free_tabl(char **tab)
 {
@@ -37,7 +37,7 @@ int		keyhook(int key, t_mdata *d)
 	return (1);
 }
 
-int		get_color(t_data *d, int y, int x)
+int		get_color(t_mdata *d, int y, int x)
 {
 	if (d->map[y][x] == '.')
 		return (0x9F9898);

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "filler.h"
+#include "visu.h"
 
 static void	pixel_put(t_mdata *d, int y, int x, int color)
 {
