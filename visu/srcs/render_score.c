@@ -14,7 +14,9 @@
 
 void		fast_exit(t_mdata *d)
 {
-	if (d->is_win != -1 && d->fast_quit == 1 && d->p_count > d->e_count + 1)
+	if (d)
+		;
+/*	if (d->is_win != -1 && d->fast_quit == 1 && d->p_count > d->e_count + 1)
 	{
 		mlx_destroy_image(d->mlx, d->imgf.img);
 		mlx_destroy_image(d->mlx, d->imgb.img);
@@ -24,59 +26,59 @@ void		fast_exit(t_mdata *d)
 	}
 	else if (d->is_win == -1)
 		calc_score(d);
-	if (d->is_win == -1 && d->fast_quit == 1 && d->p_count > d->e_count + 1)
+	if (d->is_win == -1 && d->fast_quit == 1 && d->p_count > d->one_count + 1)
 		ft_putstr("winner determined\n");
 	if (d->is_win == -1 && d->fast_quit == 1 && d->p_count > d->e_count + 1)
 		exit(1);
-}
+*/}
 
 void		calc_score(t_mdata *d)
 {
-	int		e_count;
 	int		y;
 	int		x;
 
-	e_count = 0;
+	d->one_count = 0;
 	y = -1;
 	while (++y < d->map_y)
 	{
 		x = -1;
 		while (++x < d->map_x)
-			if (d->map[y][x] == d->e_car || d->map[y][x] == d->e_car + 32)
-				e_count++;
+			if (d->map[y][x] == 'O' || d->map[y][x] == 'o')
+				d->one_count++;
 	}
-	if (e_count > d->e_count_save)
-		d->e_count++;
-	d->e_count_save = e_count;
+	d->two_count = 0;
+	y = -1;
+	while (++y < d->map_y)
+	{
+		x = -1;
+		while (++x < d->map_x)
+			if (d->map[y][x] == 'X' || d->map[y][x] == 'x')
+				d->two_count++;
+	}
 }
 
 static void	avantage(t_mdata *d)
 {
-	if (d->p_count > d->e_count)
+	if (d->one_count > d->two_count)
 	{
 		mlx_string_put(d->mlx, d->win, d->map_x * d->win_multi + 70,
 			((d->map_y * d->win_multi + 6) / 2 +
 			(d->map_y * d->win_multi + 6) / 4 / 2), 0x000287, "VICTORY");
-		mlx_string_put(d->mlx, d->win, d->map_x * d->win_multi + 96,
-			((d->map_y * d->win_multi + 6) / 2 +
-			(d->map_y * d->win_multi + 6) / 4 / 2) + 20, 0x000287, "ME");
 		mlx_string_put(d->mlx, d->win, d->map_x * d->win_multi + 66,
 			((d->map_y * d->win_multi + 6) / 2 +
-			(d->map_y * d->win_multi + 6) / 4 / 2) + 50, 0x000287, "MEURT!!!");
+			(d->map_y * d->win_multi + 6) / 4 / 2) + 20, 0x000287, "JOUEUR 1");
 	}
-	else if (d->p_count < d->e_count)
+	else if (d->two_count < d->one_count)
 	{
+		mlx_string_put(d->mlx, d->win, d->map_x * d->win_multi + 70,
+			((d->map_y * d->win_multi + 6) / 2 +
+			(d->map_y * d->win_multi + 6) / 4 / 2), 0x870000, "VICTORY");
 		mlx_string_put(d->mlx, d->win, d->map_x * d->win_multi + 66,
 			((d->map_y * d->win_multi + 6) / 2 +
-			(d->map_y * d->win_multi + 6) / 4 / 2), 0x870000, "AVANTAGE");
-		mlx_string_put(d->mlx, d->win, d->map_x * d->win_multi + 76,
-			((d->map_y * d->win_multi + 6) / 2 +
-			(d->map_y * d->win_multi + 6) / 4 / 2) + 20, 0x870000, "ENNEMY");
-		mlx_string_put(d->mlx, d->win, d->map_x * d->win_multi + 56,
-			((d->map_y * d->win_multi + 6) / 2 + (d->map_y * d->win_multi + 6)
-			/ 4 / 2) + 50, 0x000287, "NOOOOOOON!");
+			(d->map_y * d->win_multi + 6) / 4 / 2) + 20, 0x870000, "JOUEUR 2");
 	}
 }
+
 
 void		render_score(t_mdata *d)
 {
@@ -84,25 +86,19 @@ void		render_score(t_mdata *d)
 
 	calc_score(d);
 	mlx_string_put(d->mlx, d->win, d->map_x * d->win_multi + 16,
-			(d->map_y * d->win_multi + 6) / 2 / 4 - 13, 0x000287, "ME:");
-	if ((tmp = ft_itoa(d->p_count)) != NULL)
+			(d->map_y * d->win_multi + 6) / 2 / 4 - 13, 0x000287, "JOUEUR 1:");
+	if ((tmp = ft_itoa(d->one_count)) != NULL)
 		mlx_string_put(d->mlx, d->win, d->map_x * d->win_multi + 16,
 			(d->map_y * d->win_multi + 6) / 2 / 4 + 7, 0x0002B8, tmp);
 	free(tmp);
 	mlx_string_put(d->mlx, d->win, d->map_x * d->win_multi + 16,
-			(d->map_y * d->win_multi + 6) / 2 / 2 + 7, 0x870000, "ENNEMY:");
-	if ((tmp = ft_itoa(d->e_count)) != NULL)
+			(d->map_y * d->win_multi + 6) / 2 / 2 + 7, 0x870000, "JOUEUR 2:");
+	if ((tmp = ft_itoa(d->two_count)) != NULL)
 		mlx_string_put(d->mlx, d->win, d->map_x * d->win_multi + 16,
 			(d->map_y * d->win_multi + 6) / 2 / 2 + 27, 0xb80000, tmp);
 	free(tmp);
-	if (d->p_count != d->e_count)
+	if (d->one_count != d->two_count)
 		avantage(d);
-	if (d->p_count != d->e_count)
+	if (d->one_count != d->two_count)
 		return ;
-	mlx_string_put(d->mlx, d->win, d->map_x * d->win_multi + 71,
-			((d->map_y * d->win_multi + 6) / 2 +
-			(d->map_y * d->win_multi + 6) / 4 / 2), 0x870000, "EGALITE");
-	mlx_string_put(d->mlx, d->win, d->map_x * d->win_multi + 31,
-			((d->map_y * d->win_multi + 6) / 2 + (d->map_y * d->win_multi + 6)
-			/ 4 / 2) + 50, 0x000287, "CA VA CHAUFFER!");
 }

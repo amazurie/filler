@@ -30,7 +30,7 @@ void		read_map_size(t_mdata *d)
 	free_tabl(tmp);
 }
 
-void		read_piece(t_mdata *d)
+void		skip_piece(t_mdata *d)
 {
 	char	**tmp;
 	int		i;
@@ -39,18 +39,11 @@ void		read_piece(t_mdata *d)
 	while (ft_strncmp("Piece", d->line, 5) != 0)
 		get_next_line(0, &(d->line));
 	tmp = ft_strsplit(d->line, ' ');
-	d->piece_y = ft_atoi(tmp[1]);
-	d->piece_x = ft_atoi(tmp[2]);
+	j = ft_atoi(tmp[1]) + 1;
 	free_tabl(tmp);
-	d->piece = (char **)ft_memalloc(sizeof(char *) * (d->piece_y + 1));
 	i = 0;
-	while (i < d->piece_y)
-	{
+	while (i++ < j)
 		get_next_line(0, &(d->line));
-		d->piece[i] = ft_strdup(d->line);
-		j = 0;
-		i++;
-	}
 }
 
 void		read_map(t_mdata *d)
@@ -65,11 +58,10 @@ void		read_map(t_mdata *d)
 	while (++i < d->map_y)
 	{
 		get_next_line(0, &(d->line));
-	exit(0);
 		k = ft_strlen_chr(d->line, ' ') + 1;
 		j = -1;
 		while (++j < d->map_x)
 			d->map[i][j] = d->line[j + k];
 	}
-	read_piece(d);
+	skip_piece(d);
 }

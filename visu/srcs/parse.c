@@ -18,8 +18,6 @@ static int	check_opt(t_mdata *d, char av)
 		return (1);
 	else if (av == 's')
 		d->slow = 1;
-	else if (av == 'x')
-		d->is_win = 0;
 	else if (av == 'k')
 		d->keep = -1;
 	else if (av == 'd')

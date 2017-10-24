@@ -55,20 +55,19 @@ static int	win_init(t_mdata *d)
 
 int			game(t_mdata *d)
 {
-	d->place_x = -1;
-	d->place_y = -1;
 	if (get_next_line(0, &(d->line)) > 0)
 	{
 		read_map(d);
-		if (d->is_win != -1 && win_init(d) > 0)
+		if (win_init(d) > 0)
 			render(d);
 		fast_exit(d);
 	}
-	else if (d->is_win)
-		destroy(d);
 	else
+	{
+		destroy(d);
 		exit(0);
-	return (1);
+	}
+	return (0);
 }
 
 int			main(int ac, char **av)
@@ -80,11 +79,13 @@ int			main(int ac, char **av)
 	d.map_x = -1;
 	d.slow = 0;
 	d.keep = 0;
-	d.e_count = -1;
-	d.p_count = 0;
-	d.e_count_save = 0;
+	d.is_win = 0;
 	parse(&d, av, ac);
-	if (d.is_win == -1 || !(d.mlx = mlx_init()))
+	get_next_line(0, &(d.line));
+	while (ft_strncmp("$$$ exec", d.line, 8))
+		get_next_line(0, &(d.line));
+	read_map_size(&d);
+	if (!(d.mlx = mlx_init()))
 		return (0);
 	mlx_loop_hook(d.mlx, game, &d);
 	mlx_loop(d.mlx);

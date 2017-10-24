@@ -34,7 +34,6 @@ void		read_piece(t_data *d)
 {
 	char	**tmp;
 	int		i;
-	int		j;
 
 	while (ft_strncmp("Piece", d->line, 5) != 0)
 		get_next_line(0, &(d->line));
@@ -48,7 +47,6 @@ void		read_piece(t_data *d)
 	{
 		get_next_line(0, &(d->line));
 		d->piece[i] = ft_strdup(d->line);
-		j = 0;
 		i++;
 	}
 }

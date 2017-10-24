@@ -41,13 +41,9 @@ int		get_color(t_mdata *d, int y, int x)
 {
 	if (d->map[y][x] == '.')
 		return (0x9F9898);
-	else if (d->p_car == 'X' && (d->map[y][x] == 'X' || d->map[y][x] == 'x'))
+	else if (d->map[y][x] == 'O' || d->map[y][x] == 'o')
 		return (0x0033A1);
-	else if (d->p_car == 'O' && (d->map[y][x] == 'O' || d->map[y][x] == 'o'))
-		return (0x0033A1);
-	else if (d->p_car != 'X' && (d->map[y][x] == 'X' || d->map[y][x] == 'x'))
-		return (0xD02020);
-	else if (d->p_car != 'O' && (d->map[y][x] == 'O' || d->map[y][x] == 'o'))
+	else if (d->map[y][x] == 'X' || d->map[y][x] == 'x')
 		return (0xD02020);
 	return (0xF000FF);
 }
