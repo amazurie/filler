@@ -17,14 +17,26 @@ int			put_coord(t_data *d)
 	if (strat(d) == 0)
 	{
 		ft_putstr("0, 0\n");
+		if (d->is_win != -1)
+		{
+			while (d->keep != 0)
+				mlx_loop(d->mlx);
+			mlx_destroy_image(d->mlx, d->imgf.img);
+			mlx_destroy_image(d->mlx, d->imgb.img);
+			mlx_destroy_window(d->mlx, d->win);
+		}
 		exit(1);
+		d->e_count++;
+		up_win(d);
 		return (0);
 	}
 	ft_putnbr(d->place_y);
 	ft_putchar(' ');
 	ft_putnbr(d->place_x);
 	ft_putchar('\n');
+	d->p_count++;
 	free(d->piece);
+	(d->slow == 1) ? slow_sleep() : 0;
 	return (1);
 }
 
