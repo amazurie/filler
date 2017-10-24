@@ -55,18 +55,17 @@ static int	win_init(t_mdata *d)
 
 int			game(t_mdata *d)
 {
-	if (get_next_line(0, &(d->line)) > 0)
+	if (!d->ended && get_next_line(0, &(d->line)) && get_next_line(0, &(d->line))
+			&& read_map(d))
 	{
-		read_map(d);
 		if (win_init(d) > 0)
 			render(d);
 		fast_exit(d);
 	}
+	else if (d->keep)
+		d->ended = 1;
 	else
-	{
 		destroy(d);
-		exit(0);
-	}
 	return (0);
 }
 
@@ -74,11 +73,14 @@ int			main(int ac, char **av)
 {
 	t_mdata	d;
 
+	d.ended = 0;
 	d.fast_quit = 0;
 	d.win_multi = 10;
 	d.map_x = -1;
 	d.slow = 0;
-	d.keep = 0;
+	d.one_count = -1;
+	d.two_count = -1;
+	d.keep = 1;
 	d.is_win = 0;
 	parse(&d, av, ac);
 	get_next_line(0, &(d.line));

@@ -18,7 +18,8 @@ void		read_map_size(t_mdata *d)
 	int		i;
 
 	while (ft_strncmp(d->line, "Plateau", 7) != 0)
-		get_next_line(0, &(d->line));
+		if (!get_next_line(0, &(d->line)))
+			return ;
 	tmp = ft_strsplit(d->line, ' ');
 	d->map_y = ft_atoi(tmp[1]);
 	d->map_x = ft_atoi(tmp[2]);
@@ -37,31 +38,36 @@ void		skip_piece(t_mdata *d)
 	int		j;
 
 	while (ft_strncmp("Piece", d->line, 5) != 0)
-		get_next_line(0, &(d->line));
+		if (!get_next_line(0, &(d->line)))
+			return ;
 	tmp = ft_strsplit(d->line, ' ');
-	j = ft_atoi(tmp[1]) + 1;
+	j = ft_atoi(tmp[1]);
 	free_tabl(tmp);
 	i = 0;
 	while (i++ < j)
-		get_next_line(0, &(d->line));
+		if (!get_next_line(0, &(d->line)))
+			return ;
 }
 
-void		read_map(t_mdata *d)
+int			read_map(t_mdata *d)
 {
 	int		i;
 	int		j;
 	int		k;
 
 	if (ft_strncmp(d->line, "Plateau", 7) == 0)
-		get_next_line(0, &(d->line));
+		if (!get_next_line(0, &(d->line)))
+			return (0);
 	i = -1;
 	while (++i < d->map_y)
 	{
-		get_next_line(0, &(d->line));
+		if (!get_next_line(0, &(d->line)))
+			return (0);
 		k = ft_strlen_chr(d->line, ' ') + 1;
 		j = -1;
 		while (++j < d->map_x)
 			d->map[i][j] = d->line[j + k];
 	}
 	skip_piece(d);
+	return (1);
 }

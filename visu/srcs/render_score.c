@@ -16,45 +16,37 @@ void		fast_exit(t_mdata *d)
 {
 	if (d)
 		;
-/*	if (d->is_win != -1 && d->fast_quit == 1 && d->p_count > d->e_count + 1)
+	if (d->fast_quit == 1 && d->one_count != d->two_count)
 	{
-		mlx_destroy_image(d->mlx, d->imgf.img);
-		mlx_destroy_image(d->mlx, d->imgb.img);
-		mlx_destroy_window(d->mlx, d->win);
 		ft_putstr("winner determined\n");
-		exit(1);
+		destroy(d);
 	}
-	else if (d->is_win == -1)
-		calc_score(d);
-	if (d->is_win == -1 && d->fast_quit == 1 && d->p_count > d->one_count + 1)
-		ft_putstr("winner determined\n");
-	if (d->is_win == -1 && d->fast_quit == 1 && d->p_count > d->e_count + 1)
-		exit(1);
-*/}
+}
 
 void		calc_score(t_mdata *d)
 {
+	int		count;
 	int		y;
 	int		x;
 
-	d->one_count = 0;
+	count = 0;
 	y = -1;
-	while (++y < d->map_y)
-	{
-		x = -1;
+	while (++y < d->map_y && (x = -1))
 		while (++x < d->map_x)
 			if (d->map[y][x] == 'O' || d->map[y][x] == 'o')
-				d->one_count++;
-	}
-	d->two_count = 0;
+				count++;
+	if (count > d->one_count_save)
+		d->one_count++;
+	d->one_count_save = count;
+	count = 0;
 	y = -1;
-	while (++y < d->map_y)
-	{
-		x = -1;
+	while (++y < d->map_y && (x = -1))
 		while (++x < d->map_x)
 			if (d->map[y][x] == 'X' || d->map[y][x] == 'x')
-				d->two_count++;
-	}
+				count++;
+	if (count > d->two_count_save)
+		d->two_count++;
+	d->two_count_save = count;
 }
 
 static void	avantage(t_mdata *d)

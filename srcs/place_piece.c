@@ -16,7 +16,7 @@ int			put_coord(t_data *d)
 {
 	if (strat(d) == 0)
 	{
-		ft_putstr("0, 0\n");
+		ft_putstr("0 0\n");
 		exit(1);
 		return (0);
 	}

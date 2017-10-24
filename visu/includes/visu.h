@@ -44,11 +44,14 @@ typedef struct		s_mdata
 	int				img_back;
 	int				one_count;
 	int				two_count;
+	int				one_count_save;
+	int				two_count_save;
 	int				fast_quit;
+	int				ended;
 }					t_mdata;
 
 void				read_map_size(t_mdata *d);
-void				read_map(t_mdata *d);
+int					read_map(t_mdata *d);
 void				read_piece(t_mdata *d);
 void				free_tabl(char **tabl);
 void				render(t_mdata *d);

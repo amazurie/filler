@@ -53,9 +53,8 @@ int		destroy(t_mdata *d)
 	mlx_destroy_image(d->mlx, d->imgf.img);
 	mlx_destroy_image(d->mlx, d->imgb.img);
 	mlx_destroy_window(d->mlx, d->win);
-	ft_putstr("quitted unexpectedly\n");
-	exit(1);
-	return (1);
+	exit(0);
+	return (0);
 }
 
 void	slow_sleep(void)
