@@ -12,7 +12,7 @@
 
 #include "filler.h"
 
-static int	check_opt(t_data *d, char av)
+static int	check_opt(t_mdata *d, char av)
 {
 	if (av == '-')
 		return (1);
@@ -31,7 +31,7 @@ static int	check_opt(t_data *d, char av)
 	return (1);
 }
 
-void		parse(t_data *d, char **av, int ac)
+void		parse(t_mdata *d, char **av, int ac)
 {
 	int		i;
 	int		j;

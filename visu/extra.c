@@ -24,7 +24,7 @@ void	free_tabl(char **tab)
 	free(tab);
 }
 
-int		keyhook(int key, t_data *d)
+int		keyhook(int key, t_mdata *d)
 {
 	if (key == 53)
 	{
@@ -52,7 +52,7 @@ int		get_color(t_data *d, int y, int x)
 	return (0xF000FF);
 }
 
-int		destroy(t_data *d)
+int		destroy(t_mdata *d)
 {
 	mlx_destroy_image(d->mlx, d->imgf.img);
 	mlx_destroy_image(d->mlx, d->imgb.img);

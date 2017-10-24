@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   filler.h                                            :+:      :+:    :+:   */
+/*   visu.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -26,7 +26,7 @@ typedef struct		s_img
 	int				endian;
 }					t_img;
 
-typedef struct		s_data
+typedef struct		s_mdata
 {
 	void			*mlx;
 	void			*win;
@@ -54,25 +54,25 @@ typedef struct		s_data
 	int				e_count;
 	int				e_count_save;
 	int				fast_quit;
-}					t_data;
+}					t_mdata;
 
-void				read_map_size(t_data *d);
-void				read_map(t_data *d);
-void				read_piece(t_data *d);
-int					strat(t_data *d);
-int					place_piece(t_data *d, int y, int x);
+void				read_map_size(t_mdata *d);
+void				read_map(t_mdata *d);
+void				read_piece(t_mdata *d);
+int					strat(t_mdata *d);
+int					place_piece(t_mdata *d, int y, int x);
 void				free_tabl(char **tabl);
-void				render(t_data *d);
-int					up_win(t_data *d);
-void				parse(t_data *d, char **av, int ac);
-int					keyhook(int	key, t_data *d);
-int					get_color(t_data *d, int y, int x);
-void				render_back(t_data *d);
-void				render_score(t_data *d);
-int					destroy(t_data *d);
-int					put_coord(t_data *d);
+void				render(t_mdata *d);
+int					up_win(t_mdata *d);
+void				parse(t_mdata *d, char **av, int ac);
+int					keyhook(int	key, t_mdata *d);
+int					get_color(t_mdata *d, int y, int x);
+void				render_back(t_mdata *d);
+void				render_score(t_mdata *d);
+int					destroy(t_mdata *d);
+int					put_coord(t_mdata *d);
 void				slow_sleep(void);
-void				calc_score(t_data *d);
-void				fast_exit(t_data *d);
+void				calc_score(t_mdata *d);
+void				fast_exit(t_mdata *d);
 
 #endif

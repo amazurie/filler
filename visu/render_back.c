@@ -12,7 +12,7 @@
 
 #include "filler.h"
 
-static void	pixel_put(t_data *d, int y, int x, int color)
+static void	pixel_put(t_mdata *d, int y, int x, int color)
 {
 	int	size;
 	int	pos;
@@ -35,7 +35,7 @@ static void	pixel_put(t_data *d, int y, int x, int color)
 	d->imgb.ptr[++pos] = (color >> 16) & 0xFF;
 }
 
-void		render_back(t_data *d)
+void		render_back(t_mdata *d)
 {
 	int		y;
 	int		x;

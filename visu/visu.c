@@ -12,25 +12,7 @@
 
 #include "filler.h"
 
-static void	set_player(t_data *d)
-{
-	get_next_line(0, &(d->line));
-	while (ft_strncmp("$$$ exec", d->line, 8) != 0)
-		get_next_line(0, &(d->line));
-	if (ft_strncmp("$$$ exec p1 :", d->line, 13) == 0)
-	{
-		d->p_car = 'O';
-		d->e_car = 'X';
-	}
-	else
-	{
-		d->p_car = 'X';
-		d->e_car = 'O';
-	}
-	read_map_size(d);
-}
-
-void		get_multi(t_data *d)
+void		get_multi(t_mdata *d)
 {
 	if (d->win_multi == -1)
 		d->win_multi = 10;
@@ -46,7 +28,7 @@ void		get_multi(t_data *d)
 		d->win_multi++;
 }
 
-static int	win_init(t_data *d)
+static int	win_init(t_mdata *d)
 {
 	if (d->is_win == 1)
 		return (1);
@@ -71,7 +53,7 @@ static int	win_init(t_data *d)
 	return (1);
 }
 
-int			game(t_data *d)
+int			game(t_mdata *d)
 {
 	d->place_x = -1;
 	d->place_y = -1;
@@ -93,11 +75,10 @@ int			game(t_data *d)
 
 int			main(int ac, char **av)
 {
-	t_data	d;
+	t_mdata	d;
 
 	d.fast_quit = 0;
 	d.win_multi = 10;
-	d.is_win = -1;
 	d.map_x = -1;
 	d.slow = 0;
 	d.keep = 0;
@@ -106,15 +87,8 @@ int			main(int ac, char **av)
 	d.e_count_save = 0;
 	parse(&d, av, ac);
 	if (d.is_win == -1 || !(d.mlx = mlx_init()))
-		d.is_win = -1;
-	set_player(&d);
-	if (d.is_win == -1)
-		while (1)
-			game(&d);
-	if (d.is_win != -1)
-	{
-		mlx_loop_hook(d.mlx, game, &d);
-		mlx_loop(d.mlx);
-	}
-	return (1);
+		return (0);
+	mlx_loop_hook(d.mlx, game, &d);
+	mlx_loop(d.mlx);
+	return (0);
 }

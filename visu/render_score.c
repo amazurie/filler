@@ -12,7 +12,7 @@
 
 #include "filler.h"
 
-void		fast_exit(t_data *d)
+void		fast_exit(t_mdata *d)
 {
 	if (d->is_win != -1 && d->fast_quit == 1 && d->p_count > d->e_count + 1)
 	{
@@ -30,7 +30,7 @@ void		fast_exit(t_data *d)
 		exit(1);
 }
 
-void		calc_score(t_data *d)
+void		calc_score(t_mdata *d)
 {
 	int		e_count;
 	int		y;
@@ -50,7 +50,7 @@ void		calc_score(t_data *d)
 	d->e_count_save = e_count;
 }
 
-static void	avantage(t_data *d)
+static void	avantage(t_mdata *d)
 {
 	if (d->p_count > d->e_count)
 	{
@@ -78,7 +78,7 @@ static void	avantage(t_data *d)
 	}
 }
 
-void		render_score(t_data *d)
+void		render_score(t_mdata *d)
 {
 	char	*tmp;
 

@@ -12,7 +12,7 @@
 
 #include "filler.h"
 
-void		read_map_size(t_data *d)
+void		read_map_size(t_mdata *d)
 {
 	char	**tmp;
 	int		i;
@@ -30,7 +30,7 @@ void		read_map_size(t_data *d)
 	free_tabl(tmp);
 }
 
-void		read_piece(t_data *d)
+void		read_piece(t_mdata *d)
 {
 	char	**tmp;
 	int		i;
@@ -53,7 +53,7 @@ void		read_piece(t_data *d)
 	}
 }
 
-void		read_map(t_data *d)
+void		read_map(t_mdata *d)
 {
 	int		i;
 	int		j;

@@ -12,7 +12,7 @@
 
 #include "filler.h"
 
-static void	pixel_put(t_data *d, int y, int x, int color)
+static void	pixel_put(t_mdata *d, int y, int x, int color)
 {
 	int	size;
 	int	pos;
@@ -35,7 +35,7 @@ static void	pixel_put(t_data *d, int y, int x, int color)
 	d->imgf.ptr[++pos] = (color >> 16) & 0xFF;
 }
 
-static void	set_square(t_data *d, int y, int x)
+static void	set_square(t_mdata *d, int y, int x)
 {
 	int		starty;
 	int		startx;
@@ -53,7 +53,7 @@ static void	set_square(t_data *d, int y, int x)
 	}
 }
 
-void		reset_img(t_data *d)
+void		reset_img(t_mdata *d)
 {
 	int		pos;
 	int		y;
@@ -73,7 +73,7 @@ void		reset_img(t_data *d)
 	}
 }
 
-void		render(t_data *d)
+void		render(t_mdata *d)
 {
 	int		x;
 	int		y;
@@ -93,7 +93,7 @@ void		render(t_data *d)
 	render_score(d);
 }
 
-int			up_win(t_data *d)
+int			up_win(t_mdata *d)
 {
 	mlx_clear_window(d->mlx, d->win);
 	mlx_put_image_to_window(d->mlx, d->win, d->imgb.img, 0, 0);
