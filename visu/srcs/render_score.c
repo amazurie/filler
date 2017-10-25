@@ -12,17 +12,6 @@
 
 #include "visu.h"
 
-void		fast_exit(t_mdata *d)
-{
-	if (d)
-		;
-	if (d->fast_quit == 1 && d->one_count != d->two_count)
-	{
-		ft_putstr("winner determined\n");
-		destroy(d);
-	}
-}
-
 void		calc_score(t_mdata *d)
 {
 	int		count;
@@ -60,7 +49,7 @@ static void	avantage(t_mdata *d)
 			((d->map_y * d->win_multi + 6) / 2 +
 			(d->map_y * d->win_multi + 6) / 4 / 2) + 20, 0x000287, "JOUEUR 1");
 	}
-	else if (d->two_count < d->one_count)
+	else if (d->two_count > d->one_count)
 	{
 		mlx_string_put(d->mlx, d->win, d->map_x * d->win_multi + 70,
 			((d->map_y * d->win_multi + 6) / 2 +

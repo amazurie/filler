@@ -99,5 +99,5 @@ int			up_win(t_mdata *d)
 	mlx_put_image_to_window(d->mlx, d->win, d->imgb.img, 0, 0);
 	mlx_put_image_to_window(d->mlx, d->win, d->imgf.img, 3, 3);
 	render_score(d);
-	return (1);
+	return (0);
 }

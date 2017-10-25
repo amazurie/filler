@@ -66,7 +66,7 @@ $(NAME): $(OSRC)
 
 clean:
 	@rm -f $(OSRC)
-	@echo "$(DEL_COLOR)Cleaning temporary files.$(NO_COLOR)"
+	@echo "$(DEL_COLOR)Cleaning libft temporary files.$(NO_COLOR)"
 
 fclean: clean
 	@rm -f $(NAME)

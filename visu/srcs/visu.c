@@ -60,7 +60,14 @@ int			game(t_mdata *d)
 	{
 		if (win_init(d) > 0)
 			render(d);
-		fast_exit(d);
+		if (d->fast_quit == 1 && d->one_count != d->two_count)
+		{
+			ft_putstr("winner determined\n");
+			while (get_next_line(0, &(d->line))) ;
+			destroy(d);
+		}
+		if (d->slow)
+			slow_sleep();
 	}
 	else if (d->keep)
 		d->ended = 1;

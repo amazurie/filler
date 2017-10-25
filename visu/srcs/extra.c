@@ -31,10 +31,11 @@ int		keyhook(int key, t_mdata *d)
 		mlx_destroy_image(d->mlx, d->imgf.img);
 		mlx_destroy_image(d->mlx, d->imgb.img);
 		mlx_destroy_window(d->mlx, d->win);
-		ft_putstr("prematurely quitted\n");
-		exit(1);
+		if (!d->ended)
+			ft_putstr("prematurely quitted\n");
+		exit(0);
 	}
-	return (1);
+	return (0);
 }
 
 int		get_color(t_mdata *d, int y, int x)

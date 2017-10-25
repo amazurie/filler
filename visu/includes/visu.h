@@ -64,6 +64,5 @@ void				render_score(t_mdata *d);
 int					destroy(t_mdata *d);
 void				slow_sleep(void);
 void				calc_score(t_mdata *d);
-void				fast_exit(t_mdata *d);
 
 #endif
