@@ -20,21 +20,25 @@ void		calc_score(t_mdata *d)
 
 	count = 0;
 	y = -1;
-	while (++y < d->map_y && (x = -1))
+	while (d->one_count_save > -2 && ++y < d->map_y && (x = -1))
 		while (++x < d->map_x)
 			if (d->map[y][x] == 'O' || d->map[y][x] == 'o')
 				count++;
 	if (count > d->one_count_save)
 		d->one_count++;
+	else
+		d->one_count_save = -2;
 	d->one_count_save = count;
 	count = 0;
 	y = -1;
-	while (++y < d->map_y && (x = -1))
+	while (d->two_count_save > -2 && ++y < d->map_y && (x = -1))
 		while (++x < d->map_x)
 			if (d->map[y][x] == 'X' || d->map[y][x] == 'x')
 				count++;
 	if (count > d->two_count_save)
 		d->two_count++;
+	else
+		d->two_count_save = -2;
 	d->two_count_save = count;
 }
 
@@ -45,7 +49,7 @@ void		cdown(t_mdata *d)
 	mlx_string_put(d->mlx, d->win, d->map_x * d->win_multi + 92,
 		((d->map_y * d->win_multi + 6) / 2 +
 		(d->map_y * d->win_multi + 6) / 4 / 2) + 40, 0x000287, "(");
-	tmp[0] = d->cdown + '0';
+	tmp[0] = d->cdown / 2 + '0';
 	tmp[1] = 0;
 	mlx_string_put(d->mlx, d->win, d->map_x * d->win_multi + 100,
 		((d->map_y * d->win_multi + 6) / 2 +
@@ -57,7 +61,7 @@ void		cdown(t_mdata *d)
 
 static void	avantage(t_mdata *d)
 {
-	if (d->one_count > d->two_count)
+	if (d->one_count > d->two_count + 1)
 	{
 		mlx_string_put(d->mlx, d->win, d->map_x * d->win_multi + 70,
 			((d->map_y * d->win_multi + 6) / 2 +

@@ -51,7 +51,7 @@ typedef struct		s_mdata
 	int				ended;
 }					t_mdata;
 
-void				read_map_size(t_mdata *d);
+int					read_map_size(t_mdata *d);
 int					read_map(t_mdata *d);
 void				read_piece(t_mdata *d);
 void				free_tabl(char **tabl);
@@ -63,7 +63,7 @@ int					get_color(t_mdata *d, int y, int x);
 void				render_back(t_mdata *d);
 void				render_score(t_mdata *d);
 int					destroy(t_mdata *d);
-void				slow_sleep(void);
+void				slow_sleep(int ns);
 void				calc_score(t_mdata *d);
 void				cdown(t_mdata *d);
 

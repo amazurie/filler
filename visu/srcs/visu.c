@@ -55,18 +55,18 @@ static int	win_init(t_mdata *d)
 
 int			game(t_mdata *d)
 {
-	if (!d->ended && get_next_line(0, &(d->line)) && get_next_line(0, &(d->line))
-			&& read_map(d))
+	if (!d->ended && read_map(d) == 0)
 		(win_init(d) > 0) ? render(d) : 0;
 	else if (!d->keep || (d->keep && d->fast_quit))
 	{
 		d->ended = 1;
+		slow_sleep(500000000);
 		up_win(d);
-		sleep(1);
 		(--d->cdown == 0) ? destroy(d) : 0;
 		cdown(d);
 	}
-	else if (d->fast_quit == 1 && d->one_count != d->two_count)
+	else if (d->fast_quit == 1 && (d->one_count > d->two_count + 1
+				|| d->two_count > d->one_count))
 	{
 		ft_putstr("winner determined\n");
 		while (get_next_line(0, &(d->line))) ;
@@ -77,7 +77,7 @@ int			game(t_mdata *d)
 	else
 		destroy(d);
 	if (!d->ended && d->slow)
-		slow_sleep();
+		slow_sleep(100000000);
 	return (0);
 }
 
@@ -85,7 +85,7 @@ int			main(int ac, char **av)
 {
 	t_mdata	d;
 
-	d.cdown = 5;
+	d.cdown = 10;
 	d.ended = 0;
 	d.fast_quit = 0;
 	d.win_multi = 10;
@@ -96,10 +96,13 @@ int			main(int ac, char **av)
 	d.keep = 0;
 	d.is_win = 0;
 	parse(&d, av, ac);
-	get_next_line(0, &(d.line));
+	if (!get_next_line(0, &(d.line)))
+		return (1);
 	while (ft_strncmp("$$$ exec", d.line, 8))
-		get_next_line(0, &(d.line));
-	read_map_size(&d);
+		if (!get_next_line(0, &(d.line)))
+			return (1);
+	if (read_map_size(&d))
+		return (1);
 	if (!(d.mlx = mlx_init()))
 		return (0);
 	mlx_loop_hook(d.mlx, game, &d);

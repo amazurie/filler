@@ -58,12 +58,12 @@ int		destroy(t_mdata *d)
 	return (0);
 }
 
-void	slow_sleep(void)
+void	slow_sleep(int ns)
 {
 	struct timespec	req;
 	struct timespec	rem;
 
 	req.tv_sec = 0;
-	req.tv_nsec = 100000000;
+	req.tv_nsec = ns;
 	nanosleep(&req, &rem);
 }

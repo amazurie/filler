@@ -47,6 +47,7 @@ int			main(void)
 	t_data	d;
 
 	d.map_x = -1;
+	d.p_count = 0;
 	d.place_x = -1;
 	d.place_y = -1;
 	set_player(&d);
@@ -55,6 +56,7 @@ int			main(void)
 		read_map(&d);
 		if (!put_coord(&d))
 			return (0);
+		d.p_count++;
 	}
 	return (0);
 }
