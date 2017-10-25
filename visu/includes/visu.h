@@ -47,6 +47,7 @@ typedef struct		s_mdata
 	int				one_count_save;
 	int				two_count_save;
 	int				fast_quit;
+	int				cdown;
 	int				ended;
 }					t_mdata;
 
@@ -64,5 +65,6 @@ void				render_score(t_mdata *d);
 int					destroy(t_mdata *d);
 void				slow_sleep(void);
 void				calc_score(t_mdata *d);
+void				cdown(t_mdata *d);
 
 #endif

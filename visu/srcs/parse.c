@@ -20,8 +20,11 @@ static int	check_opt(t_mdata *d, char av)
 		d->slow = 1;
 	else if (av == 'k')
 		d->keep = 1;
-	else if (av == 'n' && d->fast_quit == 0)
+	else if (av == 'n')
+	{
 		d->keep = 0;
+		d->fast_quit = 0;
+	}
 	else if (av == 'd')
 		d->win_multi = -1;
 	else if (av == 'f')

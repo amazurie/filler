@@ -57,22 +57,27 @@ int			game(t_mdata *d)
 {
 	if (!d->ended && get_next_line(0, &(d->line)) && get_next_line(0, &(d->line))
 			&& read_map(d))
+		(win_init(d) > 0) ? render(d) : 0;
+	else if (!d->keep || (d->keep && d->fast_quit))
 	{
-		if (win_init(d) > 0)
-			render(d);
-		if (d->fast_quit == 1 && d->one_count != d->two_count)
-		{
-			ft_putstr("winner determined\n");
-			while (get_next_line(0, &(d->line))) ;
-			destroy(d);
-		}
-		if (d->slow)
-			slow_sleep();
+		d->ended = 1;
+		up_win(d);
+		sleep(1);
+		(--d->cdown == 0) ? destroy(d) : 0;
+		cdown(d);
+	}
+	else if (d->fast_quit == 1 && d->one_count != d->two_count)
+	{
+		ft_putstr("winner determined\n");
+		while (get_next_line(0, &(d->line))) ;
+		destroy(d);
 	}
 	else if (d->keep)
 		d->ended = 1;
 	else
 		destroy(d);
+	if (!d->ended && d->slow)
+		slow_sleep();
 	return (0);
 }
 
@@ -80,6 +85,7 @@ int			main(int ac, char **av)
 {
 	t_mdata	d;
 
+	d.cdown = 5;
 	d.ended = 0;
 	d.fast_quit = 0;
 	d.win_multi = 10;
@@ -87,7 +93,7 @@ int			main(int ac, char **av)
 	d.slow = 0;
 	d.one_count = -1;
 	d.two_count = -1;
-	d.keep = 1;
+	d.keep = 0;
 	d.is_win = 0;
 	parse(&d, av, ac);
 	get_next_line(0, &(d.line));

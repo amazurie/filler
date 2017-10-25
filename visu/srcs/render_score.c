@@ -38,6 +38,23 @@ void		calc_score(t_mdata *d)
 	d->two_count_save = count;
 }
 
+void		cdown(t_mdata *d)
+{
+	char	tmp[2];
+
+	mlx_string_put(d->mlx, d->win, d->map_x * d->win_multi + 92,
+		((d->map_y * d->win_multi + 6) / 2 +
+		(d->map_y * d->win_multi + 6) / 4 / 2) + 40, 0x000287, "(");
+	tmp[0] = d->cdown + '0';
+	tmp[1] = 0;
+	mlx_string_put(d->mlx, d->win, d->map_x * d->win_multi + 100,
+		((d->map_y * d->win_multi + 6) / 2 +
+		(d->map_y * d->win_multi + 6) / 4 / 2) + 40, 0x000287, tmp);
+	mlx_string_put(d->mlx, d->win, d->map_x * d->win_multi + 108,
+		((d->map_y * d->win_multi + 6) / 2 +
+		(d->map_y * d->win_multi + 6) / 4 / 2) + 40, 0x000287, ")");
+}
+
 static void	avantage(t_mdata *d)
 {
 	if (d->one_count > d->two_count)
