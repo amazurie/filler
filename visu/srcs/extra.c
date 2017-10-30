@@ -24,6 +24,7 @@ void	free_tabl(char **tab)
 	free(tab);
 }
 
+//#include <stdio.h>
 int		keyhook(int key, t_mdata *d)
 {
 	if (key == 53)
@@ -35,7 +36,18 @@ int		keyhook(int key, t_mdata *d)
 			ft_putstr("prematurely quitted\n");
 		exit(0);
 	}
-	return (0);
+	else if (key == 40)
+		d->keep = d->keep == 1 ? 0 : 1;
+	else if (key == 1)
+		d->slow = d->slow == 1 ? 0 : 1;
+	else if (!d->ended && key == 3)
+		d->fast_quit = d->fast_quit == 1 ? 0 : 1;
+/*	int	i = -1;
+	while (++i < 999)
+		if (i == key)
+			printf("%d\n", i);
+	exit(0);
+*/	return (0);
 }
 
 int		get_color(t_mdata *d, int y, int x)
