@@ -14,7 +14,7 @@ NAME = visufiller
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address
 
 DFLAGS = -MMD
 
@@ -33,6 +33,7 @@ SRC =	$(SRC_PATH)/visu.c			\
 		$(SRC_PATH)/render.c		\
 		$(SRC_PATH)/render_back.c	\
 		$(SRC_PATH)/render_score.c	\
+		$(SRC_PATH)/render_opt.c	\
 		$(SRC_PATH)/parse.c			\
 		$(SRC_PATH)/extra.c
 

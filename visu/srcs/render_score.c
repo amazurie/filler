@@ -73,10 +73,6 @@ static void	avantage(t_mdata *d)
 		mlx_string_put(d->mlx, d->win, d->map_x * d->win_multi + 66,
 			((d->map_y * d->win_multi + 6) / 2 +
 			(d->map_y * d->win_multi + 6) / 4 / 2) + 20, 0x870000, "JOUEUR 2");
-	if (d->slow)
-		mlx_string_put(d->mlx, d->win, d->map_x * d->win_multi + 66,
-			((d->map_y * d->win_multi + 6) / 2 +
-			(d->map_y * d->win_multi + 6) / 4 / 2) + 20, 0x870000, "plplplp");
 }
 
 

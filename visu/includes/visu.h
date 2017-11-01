@@ -66,5 +66,6 @@ int					destroy(t_mdata *d);
 void				slow_sleep(int ns);
 void				calc_score(t_mdata *d);
 void				cdown(t_mdata *d);
+void				render_opt(t_mdata *d);
 
 #endif

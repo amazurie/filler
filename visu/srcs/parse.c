@@ -44,9 +44,7 @@ void		parse(t_mdata *d, char **av, int ac)
 	{
 		j = 0;
 		if (av[i][0] == '-')
-		{
 			while (av[i][j] && check_opt(d, av[i][j]))
 				j++;
-		}
 	}
 }
