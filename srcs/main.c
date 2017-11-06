@@ -6,13 +6,13 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 14:10:18 by amazurie          #+#    #+#             */
-/*   Updated: 2017/08/24 11:52:13 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/11/06 02:46:27 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-void	free_tabl(char **tab)
+void		free_tabl(char **tab)
 {
 	int i;
 

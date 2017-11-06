@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/25 11:05:26 by amazurie          #+#    #+#             */
-/*   Updated: 2017/08/24 11:59:46 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/11/06 02:48:54 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ static void	avantage(t_mdata *d)
 			((d->map_y * d->win_multi + 6) / 2 +
 			(d->map_y * d->win_multi + 6) / 4), 0x870000, "JOUEUR 2");
 }
-
 
 void		render_score(t_mdata *d)
 {

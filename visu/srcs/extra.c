@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 14:10:12 by amazurie          #+#    #+#             */
-/*   Updated: 2017/08/22 15:17:48 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/11/06 02:47:32 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	free_tabl(char **tab)
 	free(tab);
 }
 
-//#include <stdio.h>
 int		keyhook(int key, t_mdata *d)
 {
 	if (key == 53)
@@ -42,12 +41,7 @@ int		keyhook(int key, t_mdata *d)
 		d->slow = d->slow == 1 ? 0 : 1;
 	else if (!d->ended && key == 3)
 		d->fast_quit = d->fast_quit == 1 ? 0 : 1;
-/*	int	i = -1;
-	while (++i < 999)
-		if (i == key)
-			printf("%d\n", i);
-	exit(0);
-*/	return (0);
+	return (0);
 }
 
 int		get_color(t_mdata *d, int y, int x)

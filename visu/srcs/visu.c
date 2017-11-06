@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 14:10:18 by amazurie          #+#    #+#             */
-/*   Updated: 2017/08/24 11:52:13 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/11/06 02:49:24 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ int			game(t_mdata *d)
 				|| d->two_count > d->one_count))
 	{
 		ft_putstr("winner determined\n");
-		while (get_next_line(0, &(d->line))) ;
+		while (get_next_line(0, &(d->line)))
+			;
 		destroy(d);
 	}
 	else if (d->keep)
