@@ -6,7 +6,7 @@
 #    By: amazurie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/05 13:11:07 by amazurie          #+#    #+#              #
-#    Updated: 2017/08/22 15:22:38 by amazurie         ###   ########.fr        #
+#    Updated: 2017/11/17 05:19:15 by amazurie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,6 +62,7 @@ $(MLX):
 	@$(CC) $(CFLAGS) $(DFLAGS) -I $(LIB_INC_PATH) -I $(INC_PATH) -I $(MLX_PATH) -c $< -o $@
 
 clean:
+	@make clean -C $(MLX_PATH)
 	@/bin/rm -f $(OSRC)
 	@/bin/rm -f $(DEPS)
 	@echo "$(DEL_COLOR)Cleaning visu temporary files.$(NO_COLOR)"
