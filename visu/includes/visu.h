@@ -6,12 +6,12 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/03 16:53:03 by amazurie          #+#    #+#             */
-/*   Updated: 2017/11/06 02:46:49 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/11/20 15:04:52 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLER_H
-# define FILLER_H
+#ifndef VISU_H
+# define VISU_H
 
 # include "../../libft/includes/libft.h"
 # include "../minilibx_macos/mlx.h"

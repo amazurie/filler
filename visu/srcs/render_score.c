@@ -6,11 +6,30 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/25 11:05:26 by amazurie          #+#    #+#             */
-/*   Updated: 2017/11/06 02:48:54 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/11/20 15:12:37 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu.h"
+
+static void	calc_score2(t_data *d)
+{
+	int		count;
+	int		y;
+	int		x;
+
+	count = 0;
+	y = -1;
+	while (d->two_count_save > -2 && ++y < d->map_y && (x = -1))
+		while (++x < d->map_x)
+			if (d->map[y][x] == 'X' || d->map[y][x] == 'x')
+				count++;
+	if (count > d->two_count_save)
+		d->two_count++;
+	else
+		d->two_count_save = -2;
+	d->two_count_save = count;
+}
 
 void		calc_score(t_mdata *d)
 {
@@ -29,17 +48,7 @@ void		calc_score(t_mdata *d)
 	else
 		d->one_count_save = -2;
 	d->one_count_save = count;
-	count = 0;
-	y = -1;
-	while (d->two_count_save > -2 && ++y < d->map_y && (x = -1))
-		while (++x < d->map_x)
-			if (d->map[y][x] == 'X' || d->map[y][x] == 'x')
-				count++;
-	if (count > d->two_count_save)
-		d->two_count++;
-	else
-		d->two_count_save = -2;
-	d->two_count_save = count;
+	calc_score2(d);
 }
 
 void		cdown(t_mdata *d)
