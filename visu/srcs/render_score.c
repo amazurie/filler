@@ -6,13 +6,13 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/25 11:05:26 by amazurie          #+#    #+#             */
-/*   Updated: 2017/11/20 15:12:37 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/11/20 15:58:59 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "visu.h"
 
-static void	calc_score2(t_data *d)
+static void	calc_score2(t_mdata *d)
 {
 	int		count;
 	int		y;

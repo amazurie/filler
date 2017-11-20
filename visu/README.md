@@ -3,6 +3,8 @@ Ce programme fournit un visuel lors de l'exécution de la vm du filler (eg : fil
 Son comportement en cas d'utilisation seul ou dans un contexte différent est inconnu.
 En cas d'arguments non fournis par la vm sur l'entrée standard le comportement est inconnu.
 
+Bad argument: En cas d'argument invalide le programme ignore les arguments suivants et se lance normalement
+
 Realisé avec la MinilibX
 
 -f n'affiche l'exécution de la vm que jusqu'à la première pièce de différence entre les joueurs et quitte dès la fin de lecture.

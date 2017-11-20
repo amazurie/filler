@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 14:10:18 by amazurie          #+#    #+#             */
-/*   Updated: 2017/11/06 02:49:24 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/11/20 16:24:18 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,9 @@ static int	win_init(t_mdata *d)
 
 int			game(t_mdata *d)
 {
-	if (!d->ended && read_map(d) == 0)
-		(win_init(d) > 0) ? render(d) : 0;
-	else if (!d->keep || (d->keep && d->fast_quit))
+	if ((d->ended && !d->keep) || (d->keep && d->fast_quit
+		&& (d->one_count > d->two_count + 1 || d->two_count > d->one_count)))
 	{
-		d->ended = 1;
 		slow_sleep(500000000);
 		up_win(d);
 		(--d->cdown == 0) ? destroy(d) : 0;
@@ -73,10 +71,10 @@ int			game(t_mdata *d)
 			;
 		destroy(d);
 	}
-	else if (d->keep)
-		d->ended = 1;
+	else if (!d->ended && read_map(d) == 0)
+		(win_init(d) > 0) ? render(d) : 0;
 	else
-		destroy(d);
+		d->ended = 1;
 	if (!d->ended && d->slow)
 		slow_sleep(100000000);
 	return (0);
