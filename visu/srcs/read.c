@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 14:10:44 by amazurie          #+#    #+#             */
-/*   Updated: 2017/07/25 11:52:45 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/11/21 13:17:04 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int			read_map_size(t_mdata *d)
 	int		i;
 
 	while (ft_strncmp(d->line, "Plateau", 7) != 0)
-		if (!get_next_line(0, &(d->line)))
+		if (get_next_line(0, &(d->line)) <= 0)
 			return (1);
 	tmp = ft_strsplit(d->line, ' ');
 	d->map_y = ft_atoi(tmp[1]);
@@ -39,14 +39,14 @@ int			skip_piece(t_mdata *d)
 	int		j;
 
 	while (ft_strncmp("Piece", d->line, 5) != 0)
-		if (!get_next_line(0, &(d->line)))
+		if (get_next_line(0, &(d->line)) <= 0)
 			return (1);
 	tmp = ft_strsplit(d->line, ' ');
 	j = ft_atoi(tmp[1]);
 	free_tabl(tmp);
 	i = 0;
 	while (i++ < j)
-		if (!get_next_line(0, &(d->line)))
+		if (get_next_line(0, &(d->line)) <= 0)
 			return (1);
 	return (0);
 }
@@ -58,14 +58,14 @@ int			read_map(t_mdata *d)
 	int		k;
 
 	while (ft_strncmp(d->line, "Plateau", 7))
-		if (!get_next_line(0, &(d->line)))
+		if (get_next_line(0, &(d->line)) <= 0)
 			return (1);
-	if (!get_next_line(0, &(d->line)))
+	if (get_next_line(0, &(d->line)) <= 0)
 		return (1);
 	i = -1;
 	while (++i < d->map_y)
 	{
-		if (!get_next_line(0, &(d->line)))
+		if (get_next_line(0, &(d->line)) <= 0)
 			return (1);
 		k = ft_strlen_chr(d->line, ' ') + 1;
 		j = -1;

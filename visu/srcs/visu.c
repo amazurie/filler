@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 14:10:18 by amazurie          #+#    #+#             */
-/*   Updated: 2017/11/20 16:24:18 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/11/21 13:17:32 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,10 +95,10 @@ int			main(int ac, char **av)
 	d.keep = 0;
 	d.is_win = 0;
 	parse(&d, av, ac);
-	if (!get_next_line(0, &(d.line)))
+	if (get_next_line(0, &(d.line)) <= 0)
 		return (1);
 	while (ft_strncmp("$$$ exec", d.line, 8))
-		if (!get_next_line(0, &(d.line)))
+		if (get_next_line(0, &(d.line)) <= 0)
 			return (1);
 	if (read_map_size(&d))
 		return (1);

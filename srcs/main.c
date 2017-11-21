@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 14:10:18 by amazurie          #+#    #+#             */
-/*   Updated: 2017/11/06 02:46:27 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/11/21 13:14:30 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,11 @@ void		free_tabl(char **tab)
 
 static void	set_player(t_data *d)
 {
-	get_next_line(0, &(d->line));
+	if (get_next_line(0, &(d->line)) <= 0)
+		exit(0);
 	while (ft_strncmp("$$$ exec", d->line, 8) != 0)
-		get_next_line(0, &(d->line));
+		if (get_next_line(0, &(d->line)) <= 0)
+			exit(0);
 	if (ft_strncmp("$$$ exec p1 :", d->line, 13) == 0)
 	{
 		d->p_car = 'O';

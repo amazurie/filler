@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/22 14:10:44 by amazurie          #+#    #+#             */
-/*   Updated: 2017/07/25 11:52:45 by amazurie         ###   ########.fr       */
+/*   Updated: 2017/11/21 13:16:20 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void		read_map_size(t_data *d)
 	int		i;
 
 	while (ft_strncmp(d->line, "Plateau", 7) != 0)
-		get_next_line(0, &(d->line));
+		if (get_next_line(0, &(d->line)) <= 0)
+			exit(0);
 	tmp = ft_strsplit(d->line, ' ');
 	d->map_y = ft_atoi(tmp[1]);
 	d->map_x = ft_atoi(tmp[2]);
@@ -36,7 +37,8 @@ void		read_piece(t_data *d)
 	int		i;
 
 	while (ft_strncmp("Piece", d->line, 5) != 0)
-		get_next_line(0, &(d->line));
+		if (get_next_line(0, &(d->line)) <= 0)
+			exit(0);
 	tmp = ft_strsplit(d->line, ' ');
 	d->piece_y = ft_atoi(tmp[1]);
 	d->piece_x = ft_atoi(tmp[2]);
@@ -58,11 +60,13 @@ void		read_map(t_data *d)
 	int		k;
 
 	if (ft_strncmp(d->line, "Plateau", 7) == 0)
-		get_next_line(0, &(d->line));
+		if (get_next_line(0, &(d->line)) <= 0)
+			exit(0);
 	i = -1;
 	while (++i < d->map_y)
 	{
-		get_next_line(0, &(d->line));
+		if (get_next_line(0, &(d->line)) <= 0)
+			exit(0);
 		k = ft_strlen_chr(d->line, ' ') + 1;
 		j = -1;
 		while (++j < d->map_x)
